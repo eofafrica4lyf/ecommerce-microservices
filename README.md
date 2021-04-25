@@ -24,12 +24,15 @@ $ bin/zookeeper-server-start.sh config/zookeeper.properties
 On a different terminal session
 $ bin/kafka-server-start.sh config/server.properties
 
+On a different terminal session
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic feed-service
+
 ```
 
 #### Producer - Product Service
 ```
 
-$ cd product-service/
+$ cd products-service/
 $ npm i 
 $ node server.js
 
@@ -38,7 +41,7 @@ $ node server.js
 #### Consumer - Order Service
 ```
 
-$ cd order-service/
+$ cd orders-service/
 $ npm i
 $ node server.js
 
