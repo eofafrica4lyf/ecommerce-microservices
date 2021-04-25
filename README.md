@@ -12,6 +12,10 @@
     - [Node.js](https://nodejs.org/en/download/)
     - [Kafka](https://kafka.apache.org/downloads)
 
+### How the application works
+The application features two different services: products and order. 
+Both products and orders services allow single products/orders, to be saved, retrieved and deleted.
+Whenever a single product is deleted however, an event is sent to the orders services which promptly deletes all orders associated with that product.
 
 ### To Run Application
 
