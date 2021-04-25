@@ -1,4 +1,4 @@
-# MicroService - Event Sourcing Implementation using Node.js,Kafka
+# E-commerce MicroService - Event Sourcing Implementation using Node.js,Kafka
 
 ### Technologies Used
 
