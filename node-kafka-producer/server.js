@@ -9,9 +9,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 try{
-    /**
-     * Kafka Producer Configuration
-     */
     const Producer = kafka.Producer;
     const client = new kafka.KafkaClient('localhost:2181')
     const producer = new Producer(client);
@@ -27,9 +24,8 @@ try{
             throw err;
         });
 
-        mongoose.connect(`mongodb://localhost:27017/nodekafka`,{ useNewUrlParser : true }).then((err,res) => {
+        mongoose.connect(`mongodb://localhost:27017/products`,{ useNewUrlParser : true }).then((err,res) => {
             console.log('MongoDB connected successfully');
-
             require('./routes')(app,producer,kafka_topic);
         })
 }
