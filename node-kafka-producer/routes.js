@@ -26,7 +26,8 @@ module.exports = (app, producer, kafka_topic) => {
 
     app.post('/insertProduct', async (req, res) => {
         const product = {
-            name: req.body.name
+            name: req.body.name,
+            price: req.body.price
         }
 
         try {
@@ -39,12 +40,10 @@ module.exports = (app, producer, kafka_topic) => {
             })
         }
         catch (e) {
-            console.log(e);
-
             res.status(500).send({
                 success: false,
                 data: null,
-                error: e
+                error: (Object.entries(e.errors)[0][1].properties.message).split("Path ")[1]
             })
         }
     });
@@ -96,10 +95,9 @@ module.exports = (app, producer, kafka_topic) => {
             res.status(500).send({
                 success: false,
                 data: null,
-                error: e
+                error: Object.entries(e.errors)[0][1].properties.message
             })
         }
     })
-
 }
 
